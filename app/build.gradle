@@ -14,11 +14,20 @@ android {
         versionName "0.1.0"
     }
 
+signingConfigs {
+    release {
+      storeFile file("../keystore.jks")
+      storePassword System.getenv("RELEASE_KEYSTORE_PASSWORD")
+      keyAlias System.getenv("RELEASE_KEYSTORE_ALIAS")
+      keyPassword System.getenv("RELEASE_KEY_PASSWORD")
+    }
+	
     buildTypes {
-        release {
-            minifyEnabled true
-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-        }
+    release {
+      minifyEnabled false
+      signingConfig signingConfigs.release
+      proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+    }
     }
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8

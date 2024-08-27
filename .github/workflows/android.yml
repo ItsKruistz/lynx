@@ -7,7 +7,7 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
-      - uses: actions/lekruistz@gmail.com
+      - uses: actions/[email protected]
       
       - name: Set up JDK 11
         uses: actions/setup-java@v2
@@ -22,7 +22,7 @@ jobs:
         run: ./gradlew assembleDebug
       
       - name: Upload APK artifact
-        uses: actions/lekruistz@gmail.com
+        uses: actions/[email protected]
         with:
           name: debug-apk
           path: app/build/outputs/apk/debug/*.apk

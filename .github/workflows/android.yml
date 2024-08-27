@@ -33,6 +33,10 @@ jobs:
           echo $ENCODED_STRING > keystore-b64.txt
           base64 -d keystore-b64.txt > keystore.jks
 
+      # Add this step to grant executable permissions to gradlew
+      - name: Grant execute permission for gradlew
+        run: chmod +x ./gradlew
+
       - name: Build Release apk
         env:
           RELEASE_KEYSTORE_PASSWORD: ${{ secrets.RELEASE_KEYSTORE_PASSWORD }}

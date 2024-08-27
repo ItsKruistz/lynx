@@ -1,4 +1,4 @@
-name: Android Debug Build
+name: Android Build
 
 on: push
 
@@ -7,7 +7,7 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/[email protected]
       
       - name: Set up JDK 17
         uses: actions/setup-java@v4
@@ -18,11 +18,29 @@ jobs:
       - name: Grant execute permission for gradlew
         run: chmod +x ./gradlew
       
+      # Debug APK build
       - name: Build Debug APK
         run: ./gradlew assembleDebug
       
-      - name: Upload APK artifact
+      # Release APK build
+      - name: Build Release APK
+        env:
+          RELEASE_KEYSTORE_PASSWORD: ${{ secrets.RELEASE_KEYSTORE_PASSWORD }}
+          RELEASE_KEYSTORE_ALIAS: ${{ secrets.RELEASE_KEYSTORE_ALIAS }}
+          RELEASE_KEY_PASSWORD: ${{ secrets.RELEASE_KEY_PASSWORD }}
+        run: |
+          echo $RELEASE_KEYSTORE_PASSWORD > keystore.jks
+          echo $RELEASE_KEYSTORE_ALIAS > keystore.properties
+          echo $RELEASE_KEY_PASSWORD > keystore_password.txt
+          ./gradlew assembleRelease --stacktrace
+          
+          # Clean up sensitive files
+          rm keystore.jks keystore.properties keystore_password.txt
+      
+      # Upload artifacts
+      - name: Upload Artifacts
         uses: actions/upload-artifact@v4
         with:
-          name: debug-apk
-          path: app/build/outputs/apk/debug/*.apk
+          name: release-apk
+          path: app/build/outputs/apk/release/*.apk
+          

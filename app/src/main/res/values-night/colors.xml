@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<color name="primary_color">#212121</color>
+	<color name="background">#101010</color>
+	<color name="divider">#363636</color>
+	<color name="icon">#AFAFAF</color>
+</resources>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <style name="AppTheme" parent="android:Theme.Material">
+        <item name="android:colorPrimary">@color/background</item>
+        <item name="android:colorPrimaryDark">@color/background</item>
+        <item name="android:colorAccent">@color/secondary_color</item>
+		<item name="android:navigationBarColor">@color/background</item>
+		<item name="android:windowContentOverlay">@drawable/action_bar_divider</item>
+		<item name="android:windowBackground">@color/background</item>
+		<item name="android:actionBarStyle">@style/AppActionBar</item>
+		<item name="android:actionBarSize">48dp</item>
+    </style>
+	
+	<style name="AppActionBar" parent="android:Widget.Material.ActionBar">
+		<item name="android:titleTextStyle">@style/AppActionBarTitleText</item>
+		<item name="android:background">@color/background</item>
+		<item name="android:elevation">0dp</item>
+	</style>
+
+	<style name="AppActionBarTitleText" parent="android:TextAppearance.Material.Widget.ActionBar.Title">
+		<item name="android:textSize">18sp</item>
+		<item name="android:textColor">@android:color/transparent</item>
+	</style>
+</resources>

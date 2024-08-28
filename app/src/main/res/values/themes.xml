@@ -6,7 +6,7 @@
         <item name="android:colorAccent">@color/secondary_color</item>
 		<item name="android:windowLightStatusBar" tools:targetApi="m">true</item>
         <item name="android:windowLightNavigationBar" tools:targetApi="o">true</item>
-        <item name="android:navigationBarColor" tools:targetApi="o">true</item>
+        <item name="android:navigationBarColor" tools:targetApi="o">@color/background</item>
 		<item name="android:windowContentOverlay">@drawable/action_bar_divider</item>
 		<item name="android:windowBackground">@color/background</item>
 		<item name="android:actionBarStyle">@style/AppActionBar</item>
